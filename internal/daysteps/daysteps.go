@@ -28,7 +28,7 @@ func parsePackage(data string) (int, time.Duration, error) {
 
 	steps, err := strconv.Atoi(parts[0])
 	if err != nil {
-		return 0, 0, err
+		return 0, 0, fmt.Errorf("invalid steps format: %w", err)
 	}
 
 	if steps <= 0 {
@@ -37,7 +37,7 @@ func parsePackage(data string) (int, time.Duration, error) {
 
 	duration, err := time.ParseDuration(parts[1])
 	if err != nil {
-		return 0, 0, err
+		return 0, 0, fmt.Errorf("invalid duration format: %w", err)
 	}
 
 	if duration <= 0 {
